@@ -1,12 +1,12 @@
 import Vue from 'vue';
-import VueResource from 'vue-resource';
 import VueCurrencyFilter from 'vue-currency-filter';
+import Vuelidate from 'vuelidate';
+
 import App from './App.vue';
 import router from './router';
 import store from './store';
 
-Vue.use(VueResource);
-Vue.http.options.root = 'https://vue-http-2aacd.firebaseio.com/';
+Vue.use(Vuelidate);
 
 Vue.use(VueCurrencyFilter,
   {

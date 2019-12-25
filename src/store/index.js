@@ -5,12 +5,10 @@ import stocksState from './modules/stock';
 import portfolioState from './modules/portfolio';
 import authState from './modules/auth';
 import appState from './modules/app';
-import * as actions from './actions';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  actions,
   modules: {
     app: {
       namespaced: true,
