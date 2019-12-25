@@ -4,16 +4,22 @@ import { getPositiveRandomNumber } from '../../helpers/maths';
 
 const { mapActions, mapGetters } = createNamespacedHelpers('stocks');
 
-export {
-  mapActions, mapGetters,
-};
+export { mapActions, mapGetters };
 
 const initialState = {
   stocks: [
-    { id: 1, name: 'BMW', price: 110 },
-    { id: 2, name: 'Audi', price: 90 },
-    { id: 3, name: 'VW', price: 120 },
-    { id: 4, name: 'Opel', price: 70 },
+    {
+      id: 1, name: 'BMW', price: 110,
+    },
+    {
+      id: 2, name: 'Audi', price: 90,
+    },
+    {
+      id: 3, name: 'VW', price: 120,
+    },
+    {
+      id: 4, name: 'Opel', price: 70,
+    },
   ],
 };
 

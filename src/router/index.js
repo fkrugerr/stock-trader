@@ -58,7 +58,8 @@ const routes = [
     path: '/quiz',
     name: 'quiz',
     component: () => import(/* webpackChunkName: "quiz" */ '../views/Quiz.vue'),
-    meta: {},
+    meta: {
+    },
   },
 ];
 
@@ -76,11 +77,15 @@ router.beforeEach((to, from, next) => {
     if (hasToken) {
       next();
     } else {
-      next({ name: 'signin' });
+      next({
+        name: 'signin',
+      });
     }
   } else if (to.matched.some((record) => record.meta.guest)) {
     if (hasToken) {
-      next({ name: 'dashboard' });
+      next({
+        name: 'dashboard',
+      });
     } else {
       next();
     }

@@ -8,9 +8,7 @@ import {
 
 const { mapActions, mapGetters } = createNamespacedHelpers('auth');
 
-export {
-  mapActions, mapGetters,
-};
+export { mapActions, mapGetters };
 
 const initialState = {
   userId: null,

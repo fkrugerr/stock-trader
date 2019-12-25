@@ -11,11 +11,15 @@ const refetchToken = async (refreshToken) => {
     if (res.status === 200) {
       return res.data;
     }
-    const errorObj = { code: res.status, message: res.status_text || 'Auth Error', error: true };
+    const errorObj = {
+      code: res.status, message: res.status_text || 'Auth Error', error: true,
+    };
     throw errorObj;
   } catch (error) {
     console.log(error);
-    return error.code ? error : { error: true };
+    return error.code ? error : {
+      error: true,
+    };
   }
 };
 

@@ -5,7 +5,12 @@
       <div class="card-body">
         <h5 class="card-title">Price: {{ stock.price | currency }} | Quantity: {{ stock.quantity }}</h5>
         <div class="d-flex">
-          <input type="number" class="form-control" v-model="quantity" :class="{'is-invalid': isOverQuantityLimit || quantity < 0 || !Number.isInteger(+quantity)}" />
+          <input
+            type="number"
+            class="form-control"
+            v-model="quantity"
+            :class="{'is-invalid': isOverQuantityLimit || quantity < 0 || !Number.isInteger(+quantity)}"
+          />
           <button
             class="btn btn-primary px-5 ml-3"
             @click="sell"
@@ -26,7 +31,7 @@
   </div>
 </template>
 <script>
-import { mapActions } from '../store/modules/portfolioMapper';
+import { portfolioActions } from '../store/modules/mapping';
 
 export default {
   props: {
@@ -49,7 +54,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['sellStock']),
+    ...portfolioActions(['sellStock']),
     sell() {
       this.sellStock({
         stockId: this.stock.id,

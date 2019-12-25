@@ -2,9 +2,7 @@ import { createNamespacedHelpers } from 'vuex';
 
 const { mapActions, mapGetters } = createNamespacedHelpers('portfolio');
 
-export {
-  mapActions, mapGetters,
-};
+export { mapActions, mapGetters };
 
 const initialState = {
   funds: 10000,

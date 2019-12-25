@@ -53,11 +53,15 @@ export default {
   watch: {
     isAuthorized(next, prev) {
       if (!prev && next) {
-        this.$router.push({ name: 'dashboard' });
+        this.$router.push({
+          name: 'dashboard',
+        });
         this.loadData();
       }
       if (prev && !next) {
-        this.$router.push({ name: 'signin' });
+        this.$router.push({
+          name: 'signin',
+        });
       }
     },
     isInitialized(next) {

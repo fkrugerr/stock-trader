@@ -32,7 +32,7 @@
 </template>
 <script>
 import uuidv4 from 'uuid/v4';
-import { mapActions, mapGetters } from '../store/modules/portfolioMapper';
+import { portfolioActions, portfolioGetters } from '../store/modules/mapping';
 
 export default {
   props: {
@@ -45,7 +45,7 @@ export default {
     quantity: 0,
   }),
   computed: {
-    ...mapGetters(['funds']),
+    ...portfolioGetters(['funds']),
     sum() {
       return Number.isInteger(+this.quantity)
         ? this.quantity * this.stock.price
@@ -56,7 +56,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['buyStock']),
+    ...portfolioActions(['buyStock']),
     buy() {
       this.buyStock({
         id: uuidv4(),

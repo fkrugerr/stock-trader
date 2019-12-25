@@ -6,10 +6,12 @@ export const deserializeStore = () => {
     if (store) {
       return JSON.parse(store);
     }
-    return {};
+    return {
+    };
   } catch (err) {
     console.warn('Failed to parse persistent store');
-    return {};
+    return {
+    };
   }
 };
 

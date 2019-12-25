@@ -43,8 +43,13 @@ export default {
   methods: {
     ...authActions(['signin']),
     onSubmit() {
-      const { email, password } = { ...this.values };
-      this.signin({ email, password });
+      const { email, password } = {
+        ...this.values,
+      };
+      this.signin({
+        email,
+        password,
+      });
     },
   },
 };

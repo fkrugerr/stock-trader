@@ -9,13 +9,15 @@
 </template>
 
 <script>
-import { mapGetters } from '../store/modules/portfolioMapper';
+import { portfolioGetters } from '../store/modules/mapping';
 import stockItem from '../shared/PortfolioStock.vue';
 
 export default {
   name: 'portfolio',
   computed: {
-    ...mapGetters({ stocks: 'stockPortfolio' }),
+    ...portfolioGetters({
+      stocks: 'stockPortfolio',
+    }),
   },
   components: {
     stockItem,

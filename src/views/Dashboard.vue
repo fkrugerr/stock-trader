@@ -14,11 +14,11 @@
 </template>
 
 <script>
-import { mapGetters } from '../store/modules/portfolioMapper';
+import { portfolioGetters } from '../store/modules/mapping';
 
 export default {
   computed: {
-    ...mapGetters(['funds']),
+    ...portfolioGetters(['funds']),
   },
 };
 </script>

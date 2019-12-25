@@ -15,11 +15,11 @@
             v-model.trim.lazy="$v.values.email.$model"
           />
           <small
-            v-if="$v.values.email.email"
+            v-if="!$v.values.email.$error"
             id="emailHelp"
             class="form-text text-muted"
           >We'll never share your email with anyone else.</small>
-          <small v-else id="emailError" class="form-text text-danger">Invalid email!</small>
+          <small v-else id="emailError" class="form-text text-danger">Invalid or not unique email!</small>
         </div>
         <div class="form-group">
           <label for="email">Age</label>
@@ -96,6 +96,8 @@ import {
   alphaNum,
   sameAs,
 } from 'vuelidate/lib/validators';
+import { isEmpty } from 'ramda';
+import { globalAxios as axios } from '../../helpers/axiosInstances';
 import { authActions } from '../../store/modules/mapping';
 import countriesList from '../../constants/countries';
 
@@ -118,6 +120,12 @@ export default {
       email: {
         required,
         email: emailValidator,
+        unique: (val) => {
+          if (!val) return true;
+          return axios
+            .get(`users.json?orderBy="email"&equalTo="${val}"`)
+            .then((res) => isEmpty(res.data));
+        },
       },
       age: {
         required,
@@ -141,8 +149,13 @@ export default {
   methods: {
     ...authActions(['signup']),
     onSubmit() {
-      const { email, password } = { ...this.values };
-      this.signup({ email, password });
+      const { email, password, age, country } = this.values;
+      this.signup({
+        email,
+        password,
+        age,
+        country,
+      });
     },
   },
 };
