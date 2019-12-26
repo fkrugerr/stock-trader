@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 export const authAxios = axios.create({
-  baseURL: 'https://identitytoolkit.googleapis.com/v1/',
+  baseURL: process.env.VUE_APP_AUTH_API_URL,
 });
 
 export const globalAxios = axios.create({
-  baseURL: 'https://vue-http-2aacd.firebaseio.com/',
+  baseURL: process.env.VUE_APP_API_URL,
 });

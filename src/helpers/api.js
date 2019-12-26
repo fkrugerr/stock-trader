@@ -1,8 +1,6 @@
 import { authAxios, globalAxios } from './axiosInstances';
 import { get as getLocalStorageItem } from '../store/localStorage';
 
-export const API_KEY = 'AIzaSyAQaoNRg9WLfqVSChZRjkbrtWVRWqJtIQo';
-
 const getUserData = (data) => {
   const { email, idToken, refreshToken, localId } = data;
   return {
@@ -17,10 +15,12 @@ const AUTH_END_POINTS = {
 
 export const authAPICall = async (mode, payload) => {
   try {
-    const response = await authAxios.post(`accounts:${AUTH_END_POINTS[mode]}?key=${API_KEY}`, {
-      ...payload,
-      returnSecureToken: true,
-    });
+    const response = await authAxios.post(
+      `accounts:${AUTH_END_POINTS[mode]}?key=${process.env.VUE_APP_API_KEY}`, {
+        ...payload,
+        returnSecureToken: true,
+      },
+    );
     if (response.status === 200) {
       return getUserData(response.data);
     }

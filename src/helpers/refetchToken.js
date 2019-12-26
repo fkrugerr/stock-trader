@@ -1,13 +1,13 @@
 import axios from 'axios';
 
-import { API_KEY } from './api';
-
 const refetchToken = async (refreshToken) => {
   try {
-    const res = await axios.post(`https://securetoken.googleapis.com/v1/token?key=${API_KEY}`, {
-      grant_type: 'refresh_token',
-      refresh_token: refreshToken,
-    });
+    const res = await axios.post(
+      `${process.env.VUE_APP_REFRESH_TOKEN_URL}?key=${process.env.VUE_APP_API_KEY}`, {
+        grant_type: 'refresh_token',
+        refresh_token: refreshToken,
+      },
+    );
     if (res.status === 200) {
       return res.data;
     }

@@ -68,11 +68,6 @@ export default {
       if (next && this.isAuthorized) this.loadData();
     },
   },
-  // created() {
-  //   if (this.isAuthorized) {
-  //     this.loadData();
-  //   }
-  // },
 };
 </script>
 
